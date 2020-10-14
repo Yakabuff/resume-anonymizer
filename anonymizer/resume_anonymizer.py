@@ -68,7 +68,7 @@ def anonymize(input, output, keywords):
     doc.save(output);
     print("Done :)")
 
-# anonymize("test.docx", "test1.docx", ["Jonathan Lai", "York University", "yakabuff", "Toronto", "Lassonde", "jonathanlai6@gmail.com", "647-982-6580" ])
+
 
 # regex1 = re.compile(r"York University")
 # replace1 = "redacted"
