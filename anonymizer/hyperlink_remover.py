@@ -20,7 +20,7 @@ def remove_link(path):
     xml_content = re.sub('<w:hyperlink[^>]*>',"",xml_content)
     print(xml_content)
     # xml_content = xml_content.encode('utf-8')
-    tmpfile = open("document.xml", "w")
+    tmpfile = open("../document.xml", "w")
     tmpfile.write(xml_content)
 
     # document.writestr("/document.xml", xml_content)

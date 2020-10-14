@@ -25,7 +25,7 @@ import re
 from docx import Document
 from docx.opc.constants import RELATIONSHIP_TYPE as RT
 
-import hyperlink_remover
+from anonymizer import hyperlink_remover
 
 
 def docx_replace_regex(doc_obj, regex, replace):
@@ -61,14 +61,14 @@ def anonymize(input, output, keywords):
     doc = Document(input)
     base = os.path.splitext(input)[0]
     os.rename(input, base+".zip")
-    hyperlink_remover.remove_link(base+".zip")
+    hyperlink_remover.remove_link(base + ".zip")
     os.rename(base+".zip", base + ".docx")
     for i in keywords:
         docx_replace_regex(doc, re.compile(i), redacted_string(i))
     doc.save(output);
     print("Done :)")
 
-anonymize("test.docx", "test1.docx", ["Jonathan Lai", "York University", "yakabuff", "Toronto", "Lassonde", "jonathanlai6@gmail.com", "647-982-6580" ])
+# anonymize("test.docx", "test1.docx", ["Jonathan Lai", "York University", "yakabuff", "Toronto", "Lassonde", "jonathanlai6@gmail.com", "647-982-6580" ])
 
 # regex1 = re.compile(r"York University")
 # replace1 = "redacted"
