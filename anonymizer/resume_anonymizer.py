@@ -14,8 +14,6 @@
 # print(email)
 # # images.save("img1.png", "png")
 #
-# pdf_file = 'chris_nguyen.pdf'
-# docx_file = 'chris_nguyen.docx'
 
 # class anonymize:
 #     def __init__(self, fields):
@@ -69,12 +67,3 @@ def anonymize(input, output, keywords):
     print("Done :)")
 
 
-
-# regex1 = re.compile(r"York University")
-# replace1 = "redacted"
-# print(type(replace1))
-# filename = "test.docx"
-# doc = Document(filename)
-# docx_replace_regex(doc, regex1, "redacted")
-# doc.save('test1.docx')
-# print("hi")
