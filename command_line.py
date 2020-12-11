@@ -27,21 +27,21 @@ class resumeAnonymizerCLI(object):
             help = "manually anonymize fields"
         )
         self.parser.add_argument(
-            'input',
+            '-i',
+            '--input',
+            # action='store_true',
             help = "input file path"
         )
 
-        self.parser.add_argument(
-            'output',
-            help = "output file path"
-        )
+        # self.parser.add_argument(
+        #     '-o',
+        #     '--output',
+        #     # action='store_true',
+        #     help = "output file path"
+        # )
 
     def extract_resume_data(self):
         args = self.parser.parse_args()
-        if args.output:
-            # print("output")
-            # print(args.output)
-            self.output = args.output
         if args.input:
             # print("input")
             self.input = args.input
@@ -53,11 +53,11 @@ class resumeAnonymizerCLI(object):
             # import resume_anonymizer
             secret_fields = args.manual
             resume_anonymizer.anonymize(self.input, self.output, secret_fields)
-            print(secret_fields)
+
 
         if args.auto:
             print("auto not complete yet")
-        if not(args.manual and args.auto):
+        if not(args.manual or args.auto):
             self.parser.error('Must have either manual or auto')
 
 

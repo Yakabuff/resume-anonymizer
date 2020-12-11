@@ -1,4 +1,3 @@
-import os
 import zipfile
 import ruamel.std.zipfile as zip
 import re
@@ -14,11 +13,11 @@ def remove_link(path):
     document = zipfile.ZipFile(path)
     print(document.namelist())
     xml_content = document.read('word/document.xml')
-
+    document.close()
     xml_content = xml_content.decode('utf-8')
     xml_content = xml_content.replace("</w:hyperlink>","")
     xml_content = re.sub('<w:hyperlink[^>]*>',"",xml_content)
-    print(xml_content)
+    # print(xml_content)
     # xml_content = xml_content.encode('utf-8')
     tmpfile = open("../document.xml", "w")
     tmpfile.write(xml_content)
@@ -28,8 +27,9 @@ def remove_link(path):
     with zipfile.ZipFile(path, 'a') as myzip:
 
         myzip.write('document.xml',"/word/document.xml")
+        myzip.close()
     # document.write("document.xml")
-    document.close()
+
 
 
 # if __name__ == '__main__':
